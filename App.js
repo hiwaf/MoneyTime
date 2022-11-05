@@ -1,20 +1,85 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text, View, TextInput, Pressable, ScrollView } from "react-native";
+import styles from "./styles";
+import React, { useState, useEffect } from "react";
+import { Timer } from "./components/Timer";
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
+	const [basicSalary, setBasicSalary] = useState("7500");
+	const [dailyAllowance, setDailyAllowance] = useState("38.23");
+	const [sectorPay, setSectorPay] = useState("38.23");
+	const [start, setStart] = useState(false);
+	const [reset, setReset] = useState(false);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+	return (
+		<ScrollView
+			style={{
+				flex: 1,
+				paddingHorizontal: 20,
+				backgroundColor: "#FFFFFF",
+				paddingTop: 20,
+				marginTop: 50
+			}}
+			contentContainerStyle={{ paddingBottom: 40 }}
+		>
+			<View>
+				<Text style={styles.title}>How much money are you making?</Text>
+			</View>
+			<View style={styles.content}>
+				<Text style={styles.subtitle}>
+					What is the gracious Ryanair paying you in basic salary per
+					month?
+				</Text>
+				<TextInput
+					style={styles.textInput}
+					keyboardType='numeric'
+					placeholder={basicSalary}
+					onChangeText={(text) => setBasicSalary(text)}
+				/>
+
+				<Text style={styles.subtitle}>
+					What is the gracious Ryanair paying you in sector pay per
+					hour?
+				</Text>
+				<TextInput
+					style={styles.textInput}
+					keyboardType='numeric'
+					placeholder={sectorPay}
+					onChangeText={(text) => setSectorPay(text)}
+				/>
+				<View
+					style={{
+						alignItems: "center",
+						justifyContent: "center"
+					}}
+				>
+					<Timer
+						start={start}
+						stop={false}
+						reset={reset}
+						basicPay={basicSalary}
+						sectorPay={sectorPay}
+					/>
+
+					<View>
+						<Pressable
+							style={styles.button}
+							onPress={() => {
+								setStart(!start);
+							}}
+						>
+							<Text style={styles.buttonText}>Start</Text>
+						</Pressable>
+						<Pressable
+							style={styles.button}
+							onPress={() => {
+								setReset(!reset);
+							}}
+						>
+							<Text style={styles.buttonText}>Reset</Text>
+						</Pressable>
+					</View>
+				</View>
+			</View>
+		</ScrollView>
+	);
+}
