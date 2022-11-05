@@ -31,7 +31,8 @@ export default StyleSheet.create({
 		padding: 8,
 		width: 200,
 		marginBottom: 12,
-		backgroundColor: "#fff"
+		backgroundColor: "#fff",
+		marginBottom: 40
 	},
 
 	button: {
@@ -49,7 +50,7 @@ export default StyleSheet.create({
 	},
 
 	content: {
-		marginTop: 24,
+		marginTop: 12,
 		display: "flex",
 		flexDirection: "column",
 		alignItems: "center",

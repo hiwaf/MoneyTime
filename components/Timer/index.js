@@ -16,7 +16,7 @@ export const Timer = ({ start, stop, reset, basicPay, sectorPay }) => {
 		const totalPayPerSecond = totalPayPerMillisecond * 1000;
 
 		return `
-            ${(time * totalPayPerSecond).toFixed(5)} €
+            ${(time * totalPayPerSecond).toFixed(4)} €
         `;
 	};
 
@@ -65,21 +65,15 @@ export const Timer = ({ start, stop, reset, basicPay, sectorPay }) => {
 
 	return (
 		<View style={styles.container}>
-			<View style={styles.content}>
-				<Text style={styles.text}>{formatTime(time)}</Text>
-			</View>
+			<Text style={styles.text}>{formatTime(time)}</Text>
 		</View>
 	);
 };
 
 const styles = StyleSheet.create({
 	container: {
-		marginTop: 20,
 		alignItems: "center",
 		justifyContent: "center"
-	},
-	content: {
-		marginTop: 24
 	},
 	text: {
 		fontSize: 48,

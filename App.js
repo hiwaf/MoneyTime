@@ -46,38 +46,47 @@ export default function App() {
 					placeholder={sectorPay}
 					onChangeText={(text) => setSectorPay(text)}
 				/>
+
+				<Timer
+					start={start}
+					stop={false}
+					reset={reset}
+					basicPay={basicSalary}
+					sectorPay={sectorPay}
+				/>
+
 				<View
 					style={{
+						marginTop: 20,
 						alignItems: "center",
 						justifyContent: "center"
 					}}
 				>
-					<Timer
-						start={start}
-						stop={false}
-						reset={reset}
-						basicPay={basicSalary}
-						sectorPay={sectorPay}
-					/>
-
-					<View>
-						<Pressable
-							style={styles.button}
-							onPress={() => {
-								setStart(!start);
-							}}
-						>
-							<Text style={styles.buttonText}>Start</Text>
-						</Pressable>
-						<Pressable
-							style={styles.button}
-							onPress={() => {
-								setReset(!reset);
-							}}
-						>
-							<Text style={styles.buttonText}>Reset</Text>
-						</Pressable>
-					</View>
+					<Text
+						style={{
+							fontSize: 16,
+							color: "#666666",
+							marginBottom: 20
+						}}
+					>
+						Start the timer to see how much you are making
+					</Text>
+					<Pressable
+						style={styles.button}
+						onPress={() => {
+							setStart(!start);
+						}}
+					>
+						<Text style={styles.buttonText}>Start</Text>
+					</Pressable>
+					<Pressable
+						style={styles.button}
+						onPress={() => {
+							setReset(!reset);
+						}}
+					>
+						<Text style={styles.buttonText}>Reset</Text>
+					</Pressable>
 				</View>
 			</View>
 		</ScrollView>
